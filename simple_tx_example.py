@@ -33,7 +33,7 @@ print('\n\rCAN Rx test')
 print('Bring up CAN0....')
 
 # Bring up can0 interface at 500kbps
-os.system("sudo /sbin/ip link set can0 up type can bitrate 500000")
+os.system("sudo /sbin/ip link set can0 up type can bitrate 250000")
 time.sleep(0.1)	
 print('Press CTL-C to exit')
 
