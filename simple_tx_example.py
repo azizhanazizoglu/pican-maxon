@@ -48,7 +48,7 @@ except OSError:
 try:
 	while True:
 		GPIO.output(led,True)	
-		msg = can.Message(arbitration_id=0x7de,data=[0x01,0x01,0x01, 0x01, 0x01, 0x05,0x06, count & 0xff],extended_id=False)
+		msg = can.Message(arbitration_id=0x7de,data=[0x01,0x01,0x01, 0x01, 0x01, 0x01,0x01, count & 0xff],extended_id=False)
 		bus.send(msg)
 		count +=1
 		time.sleep(0.1)
