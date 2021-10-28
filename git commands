@@ -54,7 +54,15 @@ $git remote -v
 $git branch -a (shows branches)
 
 
+#First we need to cahange on locally
+$git diff
+$git status
+$git add -A
+$git commit -m "Modified"
 
+#Then Push
+$git pull origin master
+$git push origin master
 
 
 

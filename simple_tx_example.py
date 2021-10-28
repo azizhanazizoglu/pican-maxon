@@ -19,6 +19,7 @@ import can
 import time
 import os
 
+#denem e
 
 led = 22
 GPIO.setmode(GPIO.BCM)
