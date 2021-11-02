@@ -62,8 +62,8 @@ $git commit -m "Modified"
 (Now we added those documents locally)
 
 #Then Push to change to remote repulsitory
-$git pull origin master (to see before send all what chages are)
-$git push origin master (send all)
+$git pull origin main (to see before send all what chages are)
+$git push origin main (send all)
 
 #ERRORS##
 GitHub Error: Authentication Failed from the Command Line
