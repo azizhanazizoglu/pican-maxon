@@ -19,13 +19,12 @@ import can
 import time
 import os
 
-#denem e
 
-led = 22
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-GPIO.setup(led,GPIO.OUT)
-GPIO.output(led,True)
+led = 22 #led on pican2 -> while data sending on.
+GPIO.setmode(GPIO.BCM)    #choose BCM or BOARD  
+GPIO.setwarnings(False)   
+GPIO.setup(led,GPIO.OUT)  # set a port/pin as an output 
+GPIO.output(led,True)     #set port/pin value to 1/GPIO.HIGH/True 
 
 count = 0
 
@@ -33,12 +32,12 @@ print('\n\rCAN Rx test')
 print('Bring up CAN0....')
 
 # Bring up can0 interface at 500kbps
-os.system("sudo /sbin/ip link set can0 up type can bitrate 250000")
+os.system("sudo /sbin/ip link set can0 up type can bitrate 250000") #just writing os terminal
 time.sleep(0.1)	
 print('Press CTL-C to exit')
 
 try:
-	bus = can.interface.Bus(channel='can0', bustype='socketcan_native')
+	bus = can.interface.Bus(channel='can0', bustype='socketcan_native') #in pican2 we use socket native
 except OSError:
 	print('Cannot find PiCAN board.')
 	GPIO.output(led,False)
@@ -48,12 +47,12 @@ except OSError:
 try:
 	while True:
 		GPIO.output(led,True)	
-		msg = can.Message(arbitration_id=0x7de,data=[0x01,0x01,0x01, 0x01, 0x01, 0x01,0x01, count & 0xff],extended_id=False)
+		msg = can.Message(arbitration_id=0x7de,data=[0x01,0x01,0x01, 0x01, 0x01, 0x01,0x01, count & 0xff],extended_id=False) #1111 & count 
 		bus.send(msg)
 		count +=1
-		time.sleep(0.1)
+		time.sleep(2)
 		GPIO.output(led,False)
-		time.sleep(0.1)	
+		time.sleep(0.5)	
 		print(count)	
 		 
 
